@@ -9,19 +9,21 @@ Primeiramente foi realizada a configuração do arquivo localizado no seguinte c
 Para este teste ajustamos a disponibilidade dos recursos de acordo com o levantamente previo realizado nos dados disponibilizados:
   - supported_resource_types: Patient e Observation
 
-Ajustamos para que o servidor valide as requisições realizadas de acordo com o padrão FHIR R4 alterando outros 2 parâmetros especificos do application.yaml, este responsável por definir a versão do protocolo FHIR, sendo R4 o mesmo utilizado atualmente pela RNDS.
+Ajustamos para que o servidor valide as requisições realizadas de acordo com o padrão FHIR R4 alterando os parâmetros especificos do application.yaml, este responsável por definir a versão do protocolo FHIR, sendo R4 o mesmo utilizado atualmente pela RNDS.
   - hapi.fhir.fhir_version: R4
   
-Ajustamos também o responsável por habilitar as consistencias nas requisições de acrodo com a versão do protocolo definido.
+Ajustamos também o responsável por habilitar as consistencias nas requisições de acordo com a versão do protocolo definido.
   - hapi.fhir.validation.requests_enabled: true
 .
 
 ## Deploy
 
 O servidor HL7 FHIR implementado utiliza containers Docker devidamente configurados a partir de um arquivo Docker Composer, o qual pode ser chamado através do comando 
+
   - docker-compose up -d --build
 
 Após a finalização da execução do comando, o servidor fica disponivel no seguinte endereço 
+
   - http://localhost:8080/.
 
 ## Banco de dados
@@ -40,6 +42,8 @@ Also, make sure you are not setting the Hibernate Dialect explicitly, see more d
 
 Para esta etapa, foi desenvolvido um Script Python chamado ETL.py que faz todo o ETL da amostra de dados disponibilizada, fazendo uma série de etapas para processar  os dados de pacientes a partir de um arquivo CSV, 
 criar recursos de interoperabilidade em saúde (FHIR) e enviá-los a um servidor FHIR local. 
+
+Python 3.10.11
 
 Abaixo listo as principais funcionalidades do script.
 
